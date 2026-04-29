@@ -1,0 +1,3 @@
+$$
+Z_{m,  n} = A_{m, k} \cdot B_{k, n} :: \bigwedge \times(\cap) \bigvee +(\cup)
+$$

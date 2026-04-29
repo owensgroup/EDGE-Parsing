@@ -1,0 +1,3 @@
+$$
+Z^{P, Q, S}_{m,  n, r} = A^{P, L}_{m, k} \times B^{L, Q}_{k, n}
+$$

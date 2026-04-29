@@ -1,0 +1,3 @@
+$$
+Z_{m+r, p+s} = I_{m, p} \cdot F_{r, s} :: \bigwedge \times(\cap) \bigvee +(\leftarrow)
+$$
