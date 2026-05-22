@@ -9,7 +9,12 @@ commands to use for runnig:
 docker run -it --rm -v ${PWD}:/app -w /app node:25-slim node generate_ast.mjs
 
 Note: You need to have Node.js downloaded. I have it downloaded on windows through Docker. If you download it differently 
-you might have to use a different run command. 
+you might have to use a different run command. This is how I downloaded the nodes:
+
+docker pull node:24-slim
+docker run -it --rm --entrypoint sh node:24-slim
+npm install @unified-latex/unified-latex-util-parse
+
 */
 
 
@@ -29,7 +34,7 @@ function printEdgeAst(einsumList) {
 
     for (const einsum of einsumList) {
         if (einsum.name.length > 1) {
-            console.warn(`  ⚠  Warning: "${einsum.name}" is a multi-character tensor name.`);
+            console.warn(`"${einsum.name}" is a multi-character tensor name.`);
         }
 
         console.log(`\nEinsum ${einsum.name}:`);
@@ -74,7 +79,7 @@ function printEdgeAst(einsumList) {
 
 
 
-const INPUT_FILE = "example2_tester_code.txt";
+const INPUT_FILE = "example3_tester_code.txt";
 const rawContent = fs.readFileSync(INPUT_FILE, "utf8");
 console.log("Given LaTeX Expression:\n", rawContent, "\n");
 

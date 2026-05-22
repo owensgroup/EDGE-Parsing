@@ -1,6 +1,6 @@
 $$
 \begin{align}
-Z_{m^*} = I_m :: \lll_m \mathbb{1}(filter\_even) \\
-Y = Z_m :: \bigvee +
+Z_{m^*} &= I_m :: \lll_m \mathbb{1}(filter\_even) \\
+Y &= Z_m :: \bigvee +
 \end{align}
 $$
