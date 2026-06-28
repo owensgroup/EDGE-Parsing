@@ -275,40 +275,31 @@ function consumeUntilString(cursor, endContent) {
 function createComputeOp(symbolText) {
     const symbol = BUILTIN_COMPUTE_SYMBOLS[symbolText] ?? BUILTIN_COMPUTE_SYMBOLS[symbolText.trim()];
     if (symbol) {
-        return {
-            symbol: symbol
-        };
+        return { symbol: symbol };
     }
-
-    return {
-        name: symbolText
-    };
+    // Syntax warning: user-defined compute op
+    console.warn(`Warning: "${symbolText}" is a user-defined compute op — ensure it has an entry in the user-defined registry.`);
+    return { name: symbolText };
 }
 
 function createMergeOp(symbolText) {
     const symbol = BUILTIN_MERGE_SYMBOLS[symbolText] ?? BUILTIN_MERGE_SYMBOLS[symbolText.trim()];
     if (symbol) {
-        return {
-            symbol: symbol
-        };
+        return { symbol: symbol };
     }
-
-    return {
-        name: symbolText
-    };
+    // Syntax warning: user-defined merge op
+    console.warn(`Warning: "${symbolText}" is a user-defined merge op — ensure it has an entry in the user-defined registry.`);
+    return { name: symbolText };
 }
 
 function createCoordinateOp(symbolText) {
     const symbol = BUILTIN_MERGE_SYMBOLS[symbolText] ?? BUILTIN_MERGE_SYMBOLS[symbolText.trim()];
     if (symbol) {
-        return {
-            symbol: symbol
-        };
+        return { symbol: symbol };
     }
-
-    return {
-        name: normalizeFunctionName(symbolText)
-    };
+    // Syntax warning #2: user-defined coordinate op
+    console.warn(`Warning: "${symbolText}" is a user-defined coordinate op — ensure it has an entry in the user-defined registry.`);
+    return { name: normalizeFunctionName(symbolText) };
 }
 
 function consumeComputationSpec(cursor, kind) {
@@ -404,6 +395,20 @@ export function parseExpression(rawContent) {
             tensor.role = "Output" + outputCount;
             outputCount = 0;
             einsum.tensors.push(tensor);
+
+            // Syntax error #1: every labeled \cdot must have a matching \bigwedge with the same label
+            const mapLabels = new Set(einsum.map.map(m => m.label));
+            for (const op of einsum.operator) {
+                if (op.label !== 0 && !mapLabels.has(op.label)) {
+                    throw new Error(`Syntax error in einsum "${einsum.name}": operator labeled ${op.label} has no matching \\bigwedge^${op.label}.`);
+                }
+            }
+
+            // Runtime warning: operators present but no \bigvee — will fall back to default reduction
+            if (einsum.operator.length > 0 && einsum.reduce.length === 0) {
+                console.warn(`Warning: einsum "${einsum.name}" has operators but no \\bigvee — using default reduction operator.`);
+            }
+
             parsedEdgeAst.push(einsum);
         }
 
