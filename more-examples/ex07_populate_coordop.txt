@@ -1,0 +1,3 @@
+$$
+F_{i, s^{*}} = DQ_{i, s} :: \lll_{s^{*}} \mathbbm{1}(\text{select-any-s})
+$$

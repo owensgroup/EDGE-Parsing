@@ -1,0 +1,3 @@
+$$
+F_{i+1, d} = (G_{s,d} \cdot^1 F_{i,s})_{i,d} \cdot^2 \neg P_{i,d} :: \bigwedge^1_{s}\text{AND}(\cap) \bigvee^1_{s}\text{OR}(\cup) \bigwedge^2_{d}\text{AND}(\cap)
+$$

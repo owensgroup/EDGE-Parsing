@@ -1,0 +1,3 @@
+$$
+N_{i, k:k=2, d} = G_{s:s=2, d} \cdot D_{i, s:s=2} :: \bigwedge +(\cap)
+$$

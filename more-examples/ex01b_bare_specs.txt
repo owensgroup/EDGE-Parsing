@@ -1,0 +1,3 @@
+$$
+T_{d} = G_{s, d} \cdot F_{s} :: \bigwedge +(\cap) \bigvee \text{ANY}(\cup)
+$$

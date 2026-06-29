@@ -1,0 +1,4 @@
+$$
+F_{0, s : s \in id} = 0 \\
+P_{0, d : d \in id} = \True
+$$

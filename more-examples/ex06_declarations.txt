@@ -1,0 +1,5 @@
+$$
+G^{S \equiv |V|, D \equiv |V|} \rightarrow \text{integer, empty} = 0 \\
+F^{I, S \equiv |V|} \rightarrow \text{integer, empty} = \infty \\
+P^{I, D \equiv |V|} \rightarrow \text{Boolean, empty} = \text{False}
+$$

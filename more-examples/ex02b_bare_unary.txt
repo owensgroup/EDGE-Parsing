@@ -1,0 +1,3 @@
+$$
+F_{d} = T_{d} \cdot \neg P_{d} :: \bigwedge \leftarrow(\cap)
+$$
